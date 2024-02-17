@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RetroVolt.Models;
 
 namespace RetroVolt.Data
 {
@@ -9,5 +10,9 @@ namespace RetroVolt.Data
         {
             
         }
+
+        //Add table to database
+        //We have to do a migration as well -> packet manager -> add-migration *name of migration process
+        public DbSet<Category> Categories { get; set; }
     }
 }
