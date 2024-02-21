@@ -26,5 +26,25 @@ namespace RetroVolt.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Create(Category obj)
+        {
+            //if (obj.Name == obj.DisplayOrder.ToString())
+            //{
+            //    ModelState.AddModelError("name", "The DisplayOrder cannot exactly match the Name.");
+            //}
+           
+            if (ModelState.IsValid)
+            {
+                _db.Categories.Add(obj); //Keeps track of all the changes that needs to be made in the database, because there will be more.
+                _db.SaveChanges();   //It will go to database and create the category.
+                return RedirectToAction("Index", "Category"); //When the category is added it will return to the Category
+                                                              //Index view so we can see all teh categories. 
+                                                              //if ecerything is valid return to Index
+            }
+
+            return View(obj); //else return itself
+        }
     }
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RetroVolt")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+29326634f9845f0e2487e2aa1183e785cace664c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+439f62bdce2f0032d058a4646e1f0b17e3bacafe")]
 [assembly: System.Reflection.AssemblyProductAttribute("RetroVolt")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RetroVolt")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
