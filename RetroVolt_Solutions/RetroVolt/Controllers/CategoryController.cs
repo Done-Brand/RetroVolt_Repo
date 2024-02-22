@@ -39,6 +39,7 @@ namespace RetroVolt.Controllers
             {
                 _db.Categories.Add(obj); //Keeps track of all the changes that needs to be made in the database, because there will be more.
                 _db.SaveChanges();   //It will go to database and create the category.
+                TempData["success"] = "Category created successfully";
                 return RedirectToAction("Index", "Category"); //When the category is added it will return to the Category
                                                               //Index view so we can see all teh categories. 
                                                               //if ecerything is valid return to Index
@@ -73,7 +74,8 @@ namespace RetroVolt.Controllers
             if (ModelState.IsValid)
             {
                 _db.Categories.Update(obj); //statement for updataing category
-                _db.SaveChanges();   
+                _db.SaveChanges();
+                TempData["success"] = "Category updated successfully";
                 return RedirectToAction("Index", "Category"); 
             }
 
@@ -108,6 +110,7 @@ namespace RetroVolt.Controllers
             }
             _db.Categories.Remove(obj);
             _db.SaveChanges();
+            TempData["success"] = "Category deleted successfully";
             return RedirectToAction("Index", "Category");
 
            
