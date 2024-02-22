@@ -30,11 +30,11 @@ namespace RetroVolt.Controllers
         [HttpPost]
         public IActionResult Create(Category obj)
         {
-            //if (obj.Name == obj.DisplayOrder.ToString())
-            //{
-            //    ModelState.AddModelError("name", "The DisplayOrder cannot exactly match the Name.");
-            //}
-           
+            if (obj.Name == obj.DisplayOrder.ToString())
+            {
+                ModelState.AddModelError("name", "The DisplayOrder cannot exactly match the Name.");
+            }
+
             if (ModelState.IsValid)
             {
                 _db.Categories.Add(obj); //Keeps track of all the changes that needs to be made in the database, because there will be more.
@@ -45,6 +45,43 @@ namespace RetroVolt.Controllers
             }
 
             return View(obj); //else return itself
+        }
+
+        public IActionResult Edit(int? id) //"?" means that it is made nullable.
+        {
+            if (id==null || id==0)
+            {
+                return NotFound();
+            }
+            Category categoryFromDb = _db.Categories.Find(id); //one way of retrieving category from database
+            //other ways to retrieve from databse
+            //Category categoryFromDb1 = _db.Categories.FirstOrDefault(u=>u.Id==id);
+            //Category categoryFromDb2 = _db.Categories.Where(u=>u.Id==id).FirstOrDefault();
+
+            if (categoryFromDb == null)
+            {
+                return NotFound();
+            }
+                
+            return View(categoryFromDb);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Category obj)
+        {
+            if (obj.Name == obj.DisplayOrder.ToString())
+            {
+                ModelState.AddModelError("name", "The DisplayOrder cannot exactly match the Name.");
+            }
+
+            if (ModelState.IsValid)
+            {
+                _db.Categories.Add(obj); 
+                _db.SaveChanges();   
+                return RedirectToAction("Index", "Category"); 
+            }
+
+            return View(obj); 
         }
     }
 }
