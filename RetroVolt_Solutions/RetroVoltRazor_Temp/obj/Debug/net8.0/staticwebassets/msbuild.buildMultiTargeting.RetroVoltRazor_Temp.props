@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\RetroVoltRazor_Temp.props" />
+</Project>
